@@ -12,4 +12,4 @@ COPY --from=builder /usr/src/app/target/release/my-actix-app /usr/local/bin/my-a
 # Expose port (use the same as in your Actix server)
 EXPOSE 8080
 
-CMD ["my-actix-app"]
+CMD ["server"]
