@@ -5,11 +5,9 @@ COPY . .
 RUN cargo build --release
 
 # ---- Runtime Stage ----
-FROM debian:buster-slim
+FROM debian:bookworm-slim  # << updated from buster
 RUN apt-get update && apt-get install -y ca-certificates && rm -rf /var/lib/apt/lists/*
 COPY --from=builder /usr/src/app/target/release/server /usr/local/bin/server
 
-# Expose port (use the same as in your Actix server)
 EXPOSE 8080
-
 CMD ["server"]
